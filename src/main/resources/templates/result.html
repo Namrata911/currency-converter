@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .result-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px; /* Added margin-top for spacing */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="result-container">
+    <h3 th:text="${outputDTO.sourceCurrency} + ' : ' + ${outputDTO.sourceAmount} + ' is ' + ${outputDTO.targetCurrency} + ' : ' + ${outputDTO.targetAmount}"></h3>
+</div>
+
+<button type="button" onclick="redirectToAnotherPage()">Convert Another</button>
+
+<script>
+        // JavaScript function to handle the redirection
+        function redirectToAnotherPage() {
+            // Replace 'your-url-here' with the actual URL you want to redirect to
+            window.location.href = '/index';
+        }
+    </script>
+</body>
+</html>

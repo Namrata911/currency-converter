@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Center-align dropdowns */
+        select {
+            text-align-last: center;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form action="#" th:action="@{/convert}" th:object="${inputDTO}" method="post">
+        <label for="sourceCurrency">Select Source Currency:</label>
+        <select id="sourceCurrency" name="sourceCurrency" th:field="*{sourceCurrency}">
+            <option th:each="currency : ${currencyList}" th:value="${currency.code}"
+                    th:text="${currency.code}"></option>
+        </select>
+
+        <label for="targetCurrency">Select Target Currency:</label>
+        <select id="targetCurrency" name="targetCurrency" th:field="*{targetCurrency}">
+            <option th:each="currency : ${currencyList}" th:value="${currency.code}"
+                    th:text="${currency.code}"></option>
+        </select>
+
+        <input type="number" required step="0.01" placeholder="Amount" th:field="*{amount}">
+        <button type="submit">Convert</button>
+    </form>
+</div>
+</body>
+</html>
